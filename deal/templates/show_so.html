@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Sale Order ID</th>
+        <th>Sale Order date</th>
+        <th>Sale Order Client</th>
+        <th>Sale Order Deal</th>
+        <th>Sale Order Quantity</th>
+        <th>Sale Order Total Paid</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for so in sos %}
+    <tr>
+        <td>{{ so.id }}</td>
+        <td>{{ so.date }}</td>
+        <td>{{ so.client }}</td>
+        <td>{{ so.deal }}</td>
+        <td>{{ so.quantity }}</td>
+        <td>{{ so.total_paid }}</td>
+        <td>
+            <center>
+            <a href="/editSO/{{ so.id }}">
+                <span class="fa fa-edit"></span>
+            </a>
+            <a href="/deleteSO/{{ so.id }}">
+                <span class="fa fa-trash"></span>
+            </a>
+            </center>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<center><a href="/so" class="btn btn-primary">Create a new Sale Order</a></center>
+{% endblock content %}

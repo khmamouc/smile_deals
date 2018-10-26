@@ -40,17 +40,18 @@ class Deal(models.Model):
     deal_price = models.FloatField()
     start_date = models.DateField()
     end_date = models.DateField()
-    SUPPLIER_CHOICES = tuple([(Supplier(supplier.id).id, supplier.name) for supplier in Supplier.objects.all()])
     supplier = models.ForeignKey('Supplier', on_delete=models.CASCADE)
+    stock = models.IntegerField(null=True)
     class Meta:
         db_table = 'deal'
 
-class sale_order(models.Model):
+class SaleOrder(models.Model):
     id = models.AutoField(primary_key=True)
     date = models.DateField()
-    client_id = models.ForeignKey('Client', on_delete=models.CASCADE)
+    client = models.ForeignKey('Client', on_delete=models.CASCADE)
+    deal = models.ForeignKey('Deal', on_delete=models.CASCADE)
     quantity = models.IntegerField()
-    total_paid = models.FloatField()
+    total_paid = models.FloatField(null=True, blank=True)
 
     class Meta:
         db_table = 'sale_order'

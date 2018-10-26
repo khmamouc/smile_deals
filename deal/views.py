@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
-from deal.models import Supplier, Client, Deal
-from deal.forms import SupplierForm, ClientForm, DealForm
+from deal.models import Supplier, Client, Deal, SaleOrder
+from deal.forms import SupplierForm, ClientForm, DealForm, SaleOrderForm
 
 """
     SUPPLIER VIEWS
@@ -129,6 +129,54 @@ def destroyDeal(request, id):
     deal = Deal.objects.get(id=id)
     deal.delete()
     return redirect("/showDeal")
+
+
+"""
+    SALE ORDER VIEWS
+"""
+
+def so(request):
+    if request.method == 'POST':
+        form = SaleOrderForm(request.POST)
+        import pdb; pdb.set_trace()
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('/showSO')
+            except:
+                pass
+    else:
+        form = SaleOrderForm()
+
+    return render(request, 'index_so.html', {'form': form})
+
+def showSO(request):
+    sos = SaleOrder.objects.all()
+    return render(request,"show_so.html",{'sos':sos})
+
+def editSO(request, id):
+    so = SaleOrder.objects.get(id=id)
+    return render(request, 'edit_so.html', {'so': so})
+
+def updateSO(request, id):
+    so = SaleOrder.objects.get(id=id)
+    form = SaleOrderForm(request.POST, instance=so)
+    try:
+        if form.is_valid():
+            form.save()
+            return redirect("/showSO")
+    except:
+        pass
+    return render(request, 'edit_so.html', {'so': so})
+
+def destroySO(request, id):
+    so = Deal.objects.get(id=id)
+    so.delete()
+    return redirect("/showSO")
+
+"""
+    HOME VIEW
+"""
 
 def Home(request):
     return render(request, "home.html")

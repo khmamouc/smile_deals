@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" class="post-form" action="/so">
+        {% csrf_token %}
+    <div class="container">
+<br>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <h3>Enter Details</h3>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Sale Order Id:</label>
+    <div class="col-sm-4">
+      {{ form.id }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Sale Order date:</label>
+    <div class="col-sm-4">
+      {{ form.date }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Sale Order Client:</label>
+    <div class="col-sm-4">
+      {{ form.client }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Sale Order Deal:</label>
+    <div class="col-sm-4">
+      {{ form.deal }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Sale Order Quantity:</label>
+    <div class="col-sm-4">
+      {{ form.quantity }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Sale Order Total paid:</label>
+    <div class="col-sm-4">
+      {{ form.total_paid }}
+    </div>
+  </div>
+    <div class="form-group row" >
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+    </div>
+</form>
+{% endblock content %}

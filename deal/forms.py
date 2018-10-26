@@ -1,7 +1,7 @@
 from django import forms
 from django.db import models
 
-from deal.models import Supplier, Client, Deal
+from deal.models import Supplier, Client, Deal, SaleOrder
 
 class SupplierForm(forms.ModelForm):
     class Meta:
@@ -14,8 +14,15 @@ class ClientForm(forms.ModelForm):
         model = Client
         fields = '__all__'
 
+
 class DealForm(forms.ModelForm):
     class Meta:
         model = Deal
-        supplier_id = models.ForeignKey('Supplier', on_delete=models.CASCADE, )
+        fields = '__all__'
+
+
+class SaleOrderForm(forms.ModelForm):
+    total_paid = forms.FloatField(required=False)
+    class Meta:
+        model = SaleOrder
         fields = '__all__'
