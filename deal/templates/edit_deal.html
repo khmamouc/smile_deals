@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" class="post-form" action="/updateDeal/{{deal.id}}">
+        {% csrf_token %}
+    <div class="container">
+<br>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <h3>Update Details</h3>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Deal Id:</label>
+    <div class="col-sm-4">
+        <input name="id" id="id_id" required maxlength="20" value="{{ deal.id }}"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Deal Category:</label>
+    <div class="col-sm-4">
+        <input name="category" id="id_category" required maxlength="100" value="{{ deal.category }}" />
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Deal Description:</label>
+    <div class="col-sm-4">
+        <input name="description" id="id_description" required maxlength="245" value="{{ deal.description }}" />
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Deal Initial Price:</label>
+    <div class="col-sm-4">
+        <input name="initial_price" id="id_initial_price" required maxlength="15" value="{{ deal.initial_price }}" />
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Deal Price:</label>
+    <div class="col-sm-4">
+        <input name="deal_price" id="id_deal_price" required maxlength="15" value="{{ deal.deal_price }}" />
+    </div>
+  </div>
+        <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Deal Start Date:</label>
+    <div class="col-sm-4">
+        <input name="start_date" id="id_start_date" required value="{{ deal.start_date }}" />
+    </div>
+  </div>
+        <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Deal End Date:</label>
+    <div class="col-sm-4">
+        <input name="end_date" id="id_end_date" required value="{{ deal.end_date }}" />
+    </div>
+  </div>
+  <!--<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Deal Supplier:</label>
+      <div class="col-sm-4">
+            <input name="supplier" id="id_supplier" required value="{{ deal.supplier }}" />
+      </div>
+  </div>-->
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+  </div>
+    </div>
+</form>
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Supplier ID</th>
+        <th>Supplier Name</th>
+        <th>Supplier Email</th>
+        <th>Supplier Address</th>
+        <th>Phone number</th>
+        <th>Supplier Working Hours</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for supplier in suppliers %}
+    <tr>
+        <td>{{ supplier.id }}</td>
+        <td>{{ supplier.name }}</td>
+        <td>{{ supplier.email }}</td>
+        <td>{{ supplier.address }}</td>
+        <td>{{ supplier.phone_number }}</td>
+        <td>{{ supplier.working_hours }}</td>
+        <td>
+            <center>
+                <a href="/editSupplier/{{ supplier.id }}">
+                    <span class="fa fa-edit" ></span>
+                </a>
+                <a href="/deleteSupplier/{{ supplier.id }}">
+                    <span class="fa fa-trash" ></span>
+                </a>
+            </center>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<center><a href="/supp" class="btn btn-primary">Create a new Supplier</a></center>
+{% endblock content %}

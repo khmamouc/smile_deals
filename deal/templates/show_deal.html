@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Deal ID</th>
+        <th>Deal Category</th>
+        <th>Deal Description</th>
+        <th>Deal Initial Price</th>
+        <th>Deal Deal Price</th>
+        <th>Deal Start Date</th>
+        <th>Deal End Date</th>
+        <th>Supplier</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for deal in deals %}
+    <tr>
+        <td>{{ deal.id }}</td>
+        <td>{{ deal.category }}</td>
+        <td>{{ deal.description }}</td>
+        <td>{{ deal.initial_price }}</td>
+        <td>{{ deal.deal_price }}</td>
+        <td>{{ deal.start_date }}</td>
+        <td>{{ deal.end_date }}</td>
+        <td>{{ deal.supplier }}</td>
+        <td>
+            <center>
+            <a href="/editDeal/{{ deal.id }}">
+                <span class="fa fa-edit"></span>
+            </a>
+            <a href="/deleteDeal/{{ deal.id }}">
+                <span class="fa fa-trash"></span>
+            </a>
+            </center>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<center><a href="/dea" class="btn btn-primary">Create a new Deal</a></center>
+{% endblock content %}

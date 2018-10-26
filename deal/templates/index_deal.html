@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" class="post-form" action="/dea">
+        {% csrf_token %}
+    <div class="container">
+<br>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <h3>Enter Details</h3>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Deal Id:</label>
+    <div class="col-sm-4">
+      {{ form.id }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Deal Category:</label>
+    <div class="col-sm-4">
+      {{ form.category }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Deal Description:</label>
+    <div class="col-sm-4">
+      {{ form.description }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Deal Initial Price:</label>
+    <div class="col-sm-4">
+      {{ form.initial_price }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Deal Deal Price:</label>
+    <div class="col-sm-4">
+      {{ form.deal_price }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Deal Start Date:</label>
+    <div class="col-sm-4">
+        {{ form.start_date }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label" >Deal End Date:</label>
+    <div class="col-sm-4" >
+        {{ form.end_date }}
+    </div>
+  </div>
+  <div class="form-group row" >
+    <label class="col-sm-2 col-form-label">Deal Supplier:</label>
+    <div class="col-sm-4">
+      {{ form.supplier }}
+    </div>
+  </div>
+    <div class="form-group row" >
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+    </div>
+</form>
+{% endblock content %}
